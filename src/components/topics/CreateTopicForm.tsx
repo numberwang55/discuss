@@ -26,7 +26,7 @@ export default function CreateTopicForm() {
             />
             <Textarea
               name="description"
-              label="description"
+              label="Description"
               labelPlacement="outside"
               placeholder="Describe your topic"
             />
