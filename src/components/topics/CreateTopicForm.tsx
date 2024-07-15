@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Input,
@@ -9,12 +9,13 @@ import {
   PopoverContent,
 } from "@nextui-org/react";
 import { useFormState } from "react-dom";
-import * as actions from "@/actions"
+import * as actions from "@/actions";
 
 export default function CreateTopicForm() {
   const [formState, action] = useFormState(actions.createTopic, {
-    errors: {}
-  })
+    errors: {},
+  });
+  console.log(formState.errors._form);
 
   return (
     <Popover placement="left">
@@ -41,6 +42,12 @@ export default function CreateTopicForm() {
               isInvalid={!!formState.errors.description}
               errorMessage={formState.errors.description?.join(", ")}
             />
+            {formState.errors._form && (
+              <div className="rounded p-2 bg-red-200 border border-red-400">
+                {formState.errors._form?.join(", ")}
+              </div>
+            )}
+
             <Button type="submit">Submit</Button>
           </div>
         </form>
