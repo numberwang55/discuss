@@ -16,7 +16,6 @@ export default function CreateTopicForm() {
   const [formState, action] = useFormState(actions.createTopic, {
     errors: {},
   });
-  console.log(formState.errors._form);
 
   return (
     <Popover placement="left">
