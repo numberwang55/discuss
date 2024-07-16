@@ -27,7 +27,9 @@ export async function createTopic(
   formState: CreateTopicFormState,
   formData: FormData
 ): Promise<CreateTopicFormState> {
-  // TODO: revalidate homepage
+
+  await new Promise(resolve => setTimeout(resolve, 2500))
+
   const result = createTopicSchema.safeParse({
     name: formData.get("name"),
     description: formData.get("description"),
