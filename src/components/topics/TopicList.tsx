@@ -3,7 +3,7 @@ import { Chip } from "@nextui-org/react";
 import { db } from "@/db";
 import paths from "@/paths";
 
-export default async function TopicList(params: type) {
+export default async function TopicList() {
   const topics = await db.topic.findMany();
 
   const renderedTopics = topics.map((topic) => {
