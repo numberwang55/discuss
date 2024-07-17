@@ -13,9 +13,9 @@ export default function ShowTopicPage({ params }: ShowTopicPageProps) {
       <div className="col-span-3">
         <h1 className="text-2xl font-bold mb-2">{slug}</h1>
       </div>
-
+        
       <div>
-        <CreatePostForm/>
+        <CreatePostForm slug={slug}/>
       </div>
     </div>
   );

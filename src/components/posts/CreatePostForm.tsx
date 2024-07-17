@@ -12,10 +12,16 @@ import {
 import * as actions from "@/actions";
 import FormButton from "../common/FormButton";
 
-export default function CreatePostForm() {
-  const [formState, action] = useFormState(actions.createPost, {
+interface CreatePostFormProps {
+  slug: string;
+}
+
+export default function CreatePostForm({ slug }: CreatePostFormProps) {
+  const [formState, action] = useFormState(actions.createPost.bind(null, slug), {
     errors: {},
   });
+
+
 
   return (
     <Popover placement="left">
