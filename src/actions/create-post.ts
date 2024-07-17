@@ -7,6 +7,7 @@ import { z } from "zod"
 import {auth} from "@/auth"
 import { db } from "@/db";
 import paths from "@/paths";
+import { error } from "console";
 
 const createPostSchema = z.object({
   title: z.string().min(3),
@@ -33,20 +34,20 @@ export async function createPost(formState: CreatePostFormState, formData: FormD
     };
   }
 
+  const session = await auth();
+  if (!session || !session.user) {
+    return {
+      errors: {
+        _form: ["You must be signed in to do this."],
+      },
+    };
+  }
+
+  let post: Post
+
   return {
     errors: {}
   }
-
-  // const session = await auth();
-  // if (!session || !session.user) {
-  //   return {
-  //     errors: {
-  //       _form: ["You must be signed in to do this."],
-  //     },
-  //   };
-  // }
-
-  // let post: Post
 
   // TODO: revalidate show topic page
   
